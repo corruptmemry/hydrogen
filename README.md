@@ -22,3 +22,6 @@ Run these commands:
 $ git clone https://github.com/corruptmemry/hydrogen.git
 $ cd hydrogen && sudo go build -o /usr/local/bin/hydrogen
 ```
+
+### ⚙ Configuration
+The configuration file is located in ~/.config/hydrogenrpc/config.toml
