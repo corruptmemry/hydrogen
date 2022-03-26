@@ -36,6 +36,9 @@ func main() {
 		panic(err)
 	}
 	conn, mpdErr := mpd.Dial("tcp", "localhost:"+conf.Port)
+	if mpdErr != nil {
+		panic(mpdErr)	
+	}
 	defer conn.Close()
 	for {
 		status, _ := conn.Status()
