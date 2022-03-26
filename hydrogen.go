@@ -35,20 +35,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	conn, err2 := mpd.Dial("tcp", "localhost:"+conf.Port)
-	if err2 != nil {
-		fmt.Println(err2)
-	}
+	conn, mpdErr := mpd.Dial("tcp", "localhost:"+conf.Port)
 	defer conn.Close()
 	for {
-		status, err3 := conn.Status()
-		if err3 != nil {
-			fmt.Println(err3)
-		}
-		song, err := conn.CurrentSong()
-		if err != nil {
-			fmt.Println(err3)
-		}
+		status, _ := conn.Status()
+		song, _ := conn.CurrentSong()
                 if status["state"] == "pause" {
                         err = client.SetActivity(client.Activity{
                                 State:   song["Title"],
