@@ -24,4 +24,5 @@ $ cd hydrogen && sudo go build -o /usr/local/bin/hydrogen
 ```
 
 ### ⚙ Configuration
-The configuration file is located in ~/.config/hydrogenrpc/config.toml
+The configuration file is located in ~/.config/hydrogenrpc/config.toml.
+Default MPD port is 6670.
