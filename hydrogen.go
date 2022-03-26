@@ -21,8 +21,7 @@ func readConfig() {
 	var home, _ = os.UserHomeDir()
 	if _, err := toml.DecodeFile(home+"/.config/hydrogenrpc/config.toml", &conf); err != nil {
 		os.Mkdir(home+"/.config/hydrogenrpc", 0755)
-		os.WriteFile(home+"/.config/hydrogenrpc/config.toml", []byte(`Details = "Hydrogen RPC"
-AppID = "857258957587087380"
+		os.WriteFile(home+"/.config/hydrogenrpc/config.toml", []byte(`AppID = "857258957587087380"
 Port = "6670"`), 0755)
 		readConfig()
 	}
@@ -30,7 +29,6 @@ Port = "6670"`), 0755)
 
 func main() {
 	readConfig()
-	fmt.Println("Details: " + conf.Details)
 	fmt.Println("Port: " + conf.Port)
 	fmt.Println("AppID: " + conf.AppID)
 	err := client.Login(conf.AppID)
@@ -51,10 +49,16 @@ func main() {
 		if err != nil {
 			fmt.Println(err3)
 		}
+                if status["state"] == "pause" {
+                        err = client.SetActivity(client.Activity{
+                                State:   song["Title"],
+                                Details: "Paused",
+                        })
+                }
 		if status["state"] == "play" {
 			err = client.SetActivity(client.Activity{
 				State:   song["Title"],
-				Details: conf.Details,
+				Details: "Playing",
 			})
 			if err != nil {
 				panic(err)
