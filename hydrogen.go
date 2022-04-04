@@ -51,14 +51,18 @@ func login() {
 		}
 		if status["state"] == "pause" {
 			err = client.SetActivity(client.Activity{
-				State:   "🎤  " + song["Artist"],
-				Details: "🟨  " + song["Title"],
+				State:      song["Artist"],
+				Details:    song["Title"],
+				LargeImage: "ncmpcpplogo",
+				LargeText:  "Paused",
 			})
 		}
 		if status["state"] == "play" {
 			err = client.SetActivity(client.Activity{
-				State:   "🎤  " + song["Artist"],
-				Details: "🟩  " + song["Title"],
+				State:      song["Artist"],
+				Details:    song["Title"],
+				LargeImage: "ncmpcpplogo",
+				LargeText:  "Playing",
 			})
 			if err != nil {
 				panic(err)
