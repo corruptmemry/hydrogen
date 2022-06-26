@@ -1,3 +1,5 @@
+<h1>Please don't use! This project is deprecated and contains bugs!</h1>
+
 <p align="center">
 <img src="https://img.shields.io/github/contributors/corruptmemry/hydrogen.svg?style=for-the-badge"/>
 <img src="https://img.shields.io/github/forks/corruptmemry/hydrogen.svg?style=for-the-badge"/>
